@@ -1,0 +1,46 @@
+/* Mobile first! */ 
+
+body {
+	background-color: black;
+}
+
+.login-element {
+	width: 100%;
+	height: 500px;
+	text-align: center;
+	background-color: lightGray;
+	margin: 0 auto;
+}
+
+@media only screen and (min-width:1000px) {
+	.login-element {
+		width: 80%;
+		height: 500px;
+		text-align: center;
+		background-color: lightBlue;
+		margin: 0 auto;
+	}
+}
+
+div {
+	border: 1px solid purple;
+}
+
+#placeholder {
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+
+#h1margin {
+	margin-bottom: 30px;
+}
+
+#placeholder2 {
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 30px;
+}
+
+.bigButton {
+	width: 60%;
+}
