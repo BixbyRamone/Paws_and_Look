@@ -1,13 +1,8 @@
 $(document).ready(function() {
+	var map;
 
 	$("#submit").on("click", function() {
-
-	var mapOptions = {
-    		center: new google.maps.LatLng(41.4931,-81.6790),
-   			zoom: 12,
-    		mapTypeId: google.maps.MapTypeId.ROADMAP
-		};
-
+	
 	var key = "&key=F411ff9725d287d4138503a0c95030a6"
 	var AnimURL = "http://api.petfinder.com/pet.find?format=json"
 
@@ -96,40 +91,82 @@ $(document).ready(function() {
 
 			$('#picture').attr('src', photo);
 
-			mapAPI();
+			var mapButton = $('<button>');
+
+			$(mapButton).attr('id', "view");
+
+			$('.text').append(mapButton);
+
 
 
 			// $('#picture').attr('src', newImg);
 
 		})
 
-
-
 		function displayAnimHTML(feature) {
 			$('.text').append('<br>' + feature);
 		}
 
+		 function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 41.4931, lng: -81.6790},
+          zoom: 12
 
-function mapAPI() {
-		//map api
+        });
 
-		var mapURL = "https://maps.googleapis.com/maps/api/geocode/json?address="
+        infoWindow = new google.maps.InfoWindow;
 
-		var mapAddress = locationID;
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
 
-		mapAddress = mapURL + locationID;
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Location found.');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
 
-		console.log("mapuURL: " + mapURL);
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
 
-		// var mapQueryURL 
-		// var mapOptions = {
-  //   		center: new google.maps.LatLng(41.4931,-81.6790),
-  //  			zoom: 12,
-  //   		mapTypeId: google.maps.MapTypeId.ROADMAP
-		// };
+        });
 
-		new google.maps.Map(document.getElementById('map'), mapOptions);
-	}
+// function mapAPI() {
+// 		//map api
 
-	})
+// 		var mapURL = "https://maps.googleapis.com/maps/api/geocode/json?address="
+
+// 		var mapAddress = locationID;
+
+// 		mapAddress = mapURL + locationID;
+
+// 		console.log("mapuURL: " + mapURL);
+
+// 		var mapQueryURL 
+// 		// var mapOptions = {
+//   //   		center: new google.maps.LatLng(41.4931,-81.6790),
+//   //  			zoom: 12,
+//   //   		mapTypeId: google.maps.MapTypeId.ROADMAP
+// 		// };
+
+// 		new google.maps.Map(document.getElementById('map'), mapOptions);
+// 	}
+
+	
 });
