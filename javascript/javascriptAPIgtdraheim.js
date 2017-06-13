@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	var map;
+	$('#view-map').hide();
 
 	$("#submit").on("click", function() {
 	
@@ -9,6 +10,8 @@ $(document).ready(function() {
 	var zip = "44113"
 	var locationQuery = "&location=" + zip;
 	var locationID = "";
+	var locLat = 0;
+	var locLong = 0;
 
 	var catDogSelect = "dog";
 	var catDogQuery = "&animal=";
@@ -91,11 +94,9 @@ $(document).ready(function() {
 
 			$('#picture').attr('src', photo);
 
-			var mapButton = $('<button>');
+			$('#view-map').show();
 
-			$(mapButton).attr('id', "view");
 
-			$('.text').append(mapButton);
 
 
 
@@ -107,7 +108,35 @@ $(document).ready(function() {
 			$('.text').append('<br>' + feature);
 		}
 
-		 function initMap() {
+		$("#view-map").on("click", function() {
+
+		var mapURL = "https://maps.googleapis.com/maps/api/geocode/json?address="
+
+		var mapAddress = locationID;
+
+		mapURL = mapURL + mapAddress;
+		mapURL = mapURL.replace(/ /g, "+");
+
+
+		console.log("mapuURL: " + mapURL);
+
+		$.ajax({
+			url: mapURL,
+			method: "GET"
+		}).done(function(response) {
+
+			console.log(response);
+
+			var responseLoc = response.results[0].geometry.location;
+			locLat = responseLoc.lat;
+			locLong = responseLoc.lng;
+
+			console.log(locLat);
+			console.log(locLong);
+
+
+		});
+
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 41.4931, lng: -81.6790},
           zoom: 12
@@ -135,7 +164,7 @@ $(document).ready(function() {
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
         }
-      }
+      })
 
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
@@ -145,7 +174,7 @@ $(document).ready(function() {
         infoWindow.open(map);
       }
 
-        });
+        })
 
 // function mapAPI() {
 // 		//map api
