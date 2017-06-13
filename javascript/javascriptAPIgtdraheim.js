@@ -7,17 +7,17 @@ $(document).ready(function() {
 	var key = "&key=F411ff9725d287d4138503a0c95030a6"
 	var AnimURL = "http://api.petfinder.com/pet.find?format=json"
 
+// variables for user input and petfinder api output
 	var zip = "44113"
 	var locationQuery = "&location=" + zip;
 	var locationID = "";
 	var locLat = 0;
 	var locLong = 0;
 
-	var catDogSelect = "dog";
+	var catDogSelect = "cat";
 	var catDogQuery = "&animal=";
 	var catDogAnim = "";
 
-	// refined search variables
 	var ageSelect = "";
 	var ageQuery = "&age="; // age = age + "adult"
 	var ageID = "";
@@ -134,12 +134,26 @@ $(document).ready(function() {
 			console.log(locLat);
 			console.log(locLong);
 
+			console.log("long&lat: " + locLat + ", " + locLong);
+
+        	var markerOptions = {
+    			position: new google.maps.LatLng(locLat, locLong)
+				};
+				var marker = new google.maps.Marker(markerOptions);
+				marker.setMap(map);
+
 
 		});
 
+		var mapOptions = {
+			panControl: false,
+			zoomControl: false
+		}
+
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 41.4931, lng: -81.6790},
-          zoom: 12
+          zoom: 11,
+          mapOptions
 
         });
 
@@ -164,7 +178,9 @@ $(document).ready(function() {
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
         }
-      })
+
+
+      		})
 
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
