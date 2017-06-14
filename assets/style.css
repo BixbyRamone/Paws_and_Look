@@ -1,5 +1,8 @@
-body {
-	background-image: url("images/background-image.png");
+/* Mobile first! */ 
+
+body, html {
+	background-color: #f7f7f7;
+ 	background-image: url(../images/background-image.png);
 }
 .navbar {
 	margin-bottom: 0;
@@ -18,7 +21,7 @@ body {
 }
 
 .starfixed {
-	padding-top: 22px;
+	padding-top: 15px;
 	position: fixed;
 	top: 10px;
 	right: 20px;
@@ -37,19 +40,23 @@ body {
 }
 .glyphicon-star-empty {
 	text-shadow: 3px 3px 4px white;
-	font-size: 2.2em;
+	font-size: 3.2em;
 	color: #009698;
-    margin-right: 30px;
+    margin-right: 27px;
 }
 
 .glyphicon-star-empty:hover {
-	color: #985037;
-	font-size: 2.25em;
-	margin-right: 30px;
+	color: cyan;
+	font-size: 3.2em;
+	margin-right: 27px;
 }
 
 .dog-breed{
 	margin-left: 30px;
+}
+
+#dogimage {
+	height: 400px;
 }
 
 .glyphicon-filter {
@@ -57,8 +64,6 @@ body {
 }
 
 .img-fluid {
-	width: 100%;
-	max-width: 530px;
 	height: auto;
 	margin: auto;
 	display: block;
@@ -67,9 +72,10 @@ body {
 .panel-footer {
 	background-color: #e1e1e1;
 	border-radius: 0 !important;
-	height: ;
-	margin-bottom: -50px;
-	height: 105px;
+	height: 125px;
+	position:absolute;
+    bottom:0;
+    width:100%;
 }
 
 .panel {
@@ -82,7 +88,7 @@ body {
   align-items: center;
   justify-content: center;
   margin-left: 30px;
-  margin-top: 3px;
+  margin-top: 15px;
   
   }
 
