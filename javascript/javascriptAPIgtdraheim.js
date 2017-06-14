@@ -33,6 +33,7 @@ $(document).ready(function() {
 	var sizeSelect = "";
 	var sizeQuery = "&size="; // size = size + "S"; also "M" "L" & "XL"
 	var sizeID = "";
+
 		
 	var queryURL = AnimURL + key + locationQuery + catDogQuery  + catDogSelect + ageQuery + ageSelect + sexQuery + sexSelect + breedQuery + breedSelect + sizeQuery + sizeSelect;
 	queryURL = queryURL.replace(" ", "+");
@@ -55,9 +56,15 @@ $(document).ready(function() {
 			var city = respAbrev[index].contact.city.$t;
 			var state = respAbrev[index].contact.state.$t;
 			var zipID = respAbrev[index].contact.zip.$t;
+
 // format animal location into standard format
 
-			locationID = addr + ", " + city + ", "  + state + zipID;
+			locationID = addr + ", " + city + ", "  + state + " " + zipID;
+
+			console.log("locationID check undf: " + locationID);
+			if (locationID.indexOf('undefined') == 0) {
+			locationID = locationID.replace(/undefined, /g, "");
+			}
 			// locationID = locationID.replace('"', " "); 
 			var nameID = respAbrev[index].name.$t;
 			displayAnimHTML(nameID);			
@@ -76,6 +83,12 @@ $(document).ready(function() {
 			sexID = respAbrev[index].sex.$t;
 			displayAnimHTML(sexID);
 
+			var phoneID = respAbrev[index].contact.phone.$t;
+			displayAnimHTML(phoneID);
+
+			var emailID = respAbrev[index].contact.email.$t;
+			displayAnimHTML(emailID);
+
 			if (Array.isArray(respAbrev[index].breeds.breed)) {
 				breedID = respAbrev[index].breeds.breed[0].$t + "/ " + respAbrev[index].breeds.breed[1].$t + " mix";
 					
@@ -92,7 +105,7 @@ $(document).ready(function() {
 
 			console.log(photo);
 
-			$('#picture').attr('src', photo);
+			$('#picture').attr('src', photo);// corey change here
 
 			$('#view-map').show();
 
@@ -114,14 +127,14 @@ $(document).ready(function() {
 
 		var mapAddress = locationID;
 
-		mapURL = mapURL + mapAddress;
-		mapURL = mapURL.replace(/ /g, "+");
+		var mapURLloc = mapURL + mapAddress;
+		mapURLloc = mapURLloc.replace(/ /g, "+");
 
 
 		console.log("mapuURL: " + mapURL);
 
 		$.ajax({
-			url: mapURL,
+			url: mapURLloc,
 			method: "GET"
 		}).done(function(response) {
 
@@ -131,29 +144,32 @@ $(document).ready(function() {
 			locLat = responseLoc.lat;
 			locLong = responseLoc.lng;
 
-			console.log(locLat);
-			console.log(locLong);
-
-			console.log("long&lat: " + locLat + ", " + locLong);
+			console.log("lat&long: " + locLat + ", " + locLong);
 
         	var markerOptions = {
     			position: new google.maps.LatLng(locLat, locLong)
 				};
 				var marker = new google.maps.Marker(markerOptions);
 				marker.setMap(map);
+			console.log("long&lat: " + locLat + ", " + locLong);
+			// non-working code for labels
+			// var infoWindowOptions = {
+		 //    content: 'Moscone Is Here!'
+			// };
 
+			// var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
+			// google.maps.event.addListener(marker,'click',function(e){
+  
+  	// 		infoWindow.open(map, marker);
+  
+			// });
 
 		});
-
-		var mapOptions = {
-			panControl: false,
-			zoomControl: false
-		}
-
+		
         map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 41.4931, lng: -81.6790},
+          center: {lat: 41.4931, lng: -81.6790}, //lat: 41.4931, lng: -81.6790
           zoom: 11,
-          mapOptions
+          scrollwheel: false
 
         });
 
@@ -166,6 +182,13 @@ $(document).ready(function() {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
+            //making markers. should turn into a function
+            var markerOptions = {
+    			position: new google.maps.LatLng(pos.lat, pos.lng)
+				};
+				var marker = new google.maps.Marker(markerOptions);
+				marker.setMap(map);
+			console.log("pos.long&lat: " + pos.lat + ", " + pos.lng);
 
             infoWindow.setPosition(pos);
             infoWindow.setContent('Location found.');
@@ -174,9 +197,33 @@ $(document).ready(function() {
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
           });
+//run rever geolocation for getting zip code
+
+  //         var geolocQuery = "http://maps.googleapis.com/maps/api/geocode/json?latlng="//40.714224,-73.961452&sensor=true;
+		// 	var latlngQuery = pos.lat + "," + pos.lng;
+		// 	geolocQuery = geolocQuery + latlngQuery + "&sensor=true";
+
+		// 	$.ajax({
+		// 	url: geolocQuery,
+		// 	method: "GET"
+		// }).done(function(response) {
+		// 	console.log("reverse GeoLocateQuery: " + response);
+
+		// });          
         } else {
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
+
+  //         var mapURLzip = mapURL + zip;
+  //         mapURLzip = mapURLzip.replace(/ /g, "+");
+  //         $.ajax({
+		// 	url: mapURLzip,
+		// 	method: "GET"
+		// }).done(function(response) {
+		// 	console.log("mapURLzip: " + mapURLzip);
+		// 	var zipGetLatLngResp = response;
+		// });
+
         }
 
 
