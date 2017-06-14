@@ -194,6 +194,12 @@ button {
 	height: 90px;
 }
 
+.pet-image {
+  margin: 20px;
+  width: 80px;
+  height: 90px;
+}
+
 #pet-choices {
 	text-align: center;
 
