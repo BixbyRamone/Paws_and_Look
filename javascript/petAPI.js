@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-<<<<<<< HEAD
     // Initialize Firebase
     var config = {
     apiKey: "AIzaSyCj_AZGEOgcPxJj6-qlIAjeE7o_uIGpoxY",
@@ -41,13 +40,13 @@ $(document).ready(function() {
 			sex: response.petfinder.pets.pet.sex.$t,
 			name: response.petfinder.pets.pet.name.$t,
 			age: response.petfinder.pets.pet.age.$t,
-			//address1: response.petfinder.pets.pet.contact.address1.$t,
-			//address2: response.petfinder.pets.pet.contact.address2.$t,
-			//city: response.petfinder.pets.pet.contact.city.$t,
-			//state: response.petfinder.pets.pet.contact.state.$t,
-			//zip: response.petfinder.pets.pet.contact.zip.$t,
-			//phone: response.petfinder.pets.pet.contact.phone.$t,
-			//email: response.petfinder.pets.pet.contact.email.$t,
+			address1: response.petfinder.pets.pet.contact.address1.$t,
+			address2: response.petfinder.pets.pet.contact.address2.$t,
+			city: response.petfinder.pets.pet.contact.city.$t,
+			state: response.petfinder.pets.pet.contact.state.$t,
+			zip: response.petfinder.pets.pet.contact.zip.$t,
+			phone: response.petfinder.pets.pet.contact.phone.$t,
+			email: response.petfinder.pets.pet.contact.email.$t,
 			photo: response.petfinder.pets.pet.media.photos.photo[2].$t
 		    }
 		
