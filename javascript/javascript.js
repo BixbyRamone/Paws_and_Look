@@ -42,7 +42,19 @@ $(document).ready(function() {
 			choiceDisplay.attr("alt", choiceArr[i].alt);
 			$("#pet-choices").prepend(choiceDisplay);
 		}
+		$(".choice-image").on("click", function () {
+			if ($(this).attr("alt") === "cat") {
+				alert("go to cat");
+			}
+
+			else {
+				alert("go to dog");
+			}	
+
+	});
 	};
+
+	
 
 	//calling function  for cat dog pics
 	images();
@@ -79,7 +91,6 @@ $(document).ready(function() {
             sexTd.append(data.sex);
 
             //appending data to page
- 			nameTd.addClass("center");
  			sexTd.addClass("center");
             newTr.append(imageTd);
             newTr.append(nameTd);
@@ -119,10 +130,10 @@ $(document).ready(function() {
 				imageDisplay.addClass("image");
 				imageDisplay.attr("src", imageValue);
 				$(".main-login").append("<div class=image>");
-				$(".main-login").append("<div class=name>");
+				$(".main-login").append("<div class=name>Name: ");
 				$(".main-login").append("<div class=sex>");
-				$(".main-login").append("<div class=age>");
-				$(".main-login").append("<div class=breed>");
+				$(".main-login").append("<div class=age>Age: ");
+				$(".main-login").append("<div class=breed>Breed: ");
 				$(".image").append(imageDisplay);
 				$(".name").append(nameValue);
 				$(".sex").append(sexValue);

@@ -205,6 +205,32 @@ button {
 
 }
 
+.pet-name {
+  text-align: center;
+}
+
+.name, .sex, .age, .breed {
+  font-size: 18px;
+  padding: 5px;
+}
+
+.fa {
+  font: normal normal normal 28px/1 FontAwesome;
+}
+
+.fa-eye {
+  font: normal normal normal 40px/1 FontAwesome;
+}
+
+.fa:hover {
+  color: #00afb1;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+  vertical-align: middle;
+  font-size: 24px;
+}
+
 #zip-input {
 	margin: 20px 0px;
 }
