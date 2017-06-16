@@ -23,7 +23,8 @@
     </script>
 
     <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
-
+   
+    <script src="javascript/login.js"></script> 
     <script src="javascript/javascript.js"></script>
 
   </head>
@@ -31,10 +32,14 @@
   <body>
 
     <form>
-      <input type="text" id="zip">
+      <input type="text" id="regEmail" required>
+      <label for="regEmail">Input your email</label>
+
+      <input type="text" id="regPassword" required>
+      <label for="regPassword">Input your password</label>
     </form>
 
-    <button id="submit">Click me!</button>
+    <button id="regSubmit">Click me!</button>
 
     <div id="petDiv"></div>
 

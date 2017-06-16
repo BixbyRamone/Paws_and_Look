@@ -4,24 +4,6 @@ body {
 	background-color: lightGray;
 }
 
-.login-element {
-	width: 100%;
-	height: 500px;
-	text-align: center;
-	background-color: lightGray;
-	margin: 0 auto;
-}
-
-@media only screen and (min-width:1000px) {
-	.login-element {
-		width: 80%;
-		height: 500px;
-		text-align: center;
-		background-color: lightBlue;
-		margin: 0 auto;
-	}
-}
-
 div {
 	border: 1px solid purple;
 }
@@ -43,4 +25,8 @@ div {
 
 .bigButton {
 	width: 60%;
+}
+
+input:required {
+	color: red;
 }

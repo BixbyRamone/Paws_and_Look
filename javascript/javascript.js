@@ -14,7 +14,6 @@ $(document).ready(function() {
 
     var database = firebase.database();
 
-    //click handler for AJAX to pull pet info from the API
 	$("#submit").on("click", function() {
 
 		event.preventDefault();
@@ -43,11 +42,11 @@ $(document).ready(function() {
 			age: response.petfinder.pets.pet.age.$t,
 			//address1: response.petfinder.pets.pet.contact.address1.$t,
 			//address2: response.petfinder.pets.pet.contact.address2.$t,
-			city: response.petfinder.pets.pet.contact.city.$t,
-			state: response.petfinder.pets.pet.contact.state.$t,
-			zip: response.petfinder.pets.pet.contact.zip.$t,
+			//city: response.petfinder.pets.pet.contact.city.$t,
+			//state: response.petfinder.pets.pet.contact.state.$t,
+			//zip: response.petfinder.pets.pet.contact.zip.$t,
 			//phone: response.petfinder.pets.pet.contact.phone.$t,
-			email: response.petfinder.pets.pet.contact.email.$t,
+			//email: response.petfinder.pets.pet.contact.email.$t,
 			photo: response.petfinder.pets.pet.media.photos.photo[2].$t
 		    }
 		
