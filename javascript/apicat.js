@@ -60,21 +60,21 @@ $(document).ready(function() {
 			locationID = addr + ", " + city + ", "  + state + zipID;
 			// locationID = locationID.replace('"', " "); 
 			var nameID = respAbrev[index].name.$t;
-			displayAnimHTML(nameID);			
+			displayNameHTML(nameID);			
 
-			console.log("locationID: " + locationID);
-			displayAnimHTML(locationID);
+			// console.log("locationID: " + locationID);
+			// displayAnimHTML(locationID);
 
-			ageID = respAbrev[index].age.$t;
-			console.log(ageID);
-			displayAnimHTML(ageID);
+			// ageID = respAbrev[index].age.$t;
+			// console.log(ageID);
+			// displayAnimHTML(ageID);
 
-			catDogAnim = respAbrev[index].animal.$t;
-			console.log(catDogAnim);
-			displayAnimHTML(catDogAnim);
+			// catDogAnim = respAbrev[index].animal.$t;
+			// console.log(catDogAnim);
+			// displayAnimHTML(catDogAnim);
 
-			sexID = respAbrev[index].sex.$t;
-			displayAnimHTML(sexID);
+			// sexID = respAbrev[index].sex.$t;
+			// displayAnimHTML(sexID);
 
 			if (Array.isArray(respAbrev[index].breeds.breed)) {
 				breedID = respAbrev[index].breeds.breed[0].$t + "/ " + respAbrev[index].breeds.breed[1].$t + " mix";
@@ -82,17 +82,17 @@ $(document).ready(function() {
 			} else
 			 { breedID = respAbrev[index].breeds.breed.$t };
 
-			displayAnimHTML(breedID);
-			console.log("breedID: " + breedID);			
+			// displayAnimHTML(breedID);
+			// console.log("breedID: " + breedID);			
 
-			sizeID = respAbrev[index].size.$t;
-			displayAnimHTML(sizeID);
+			// sizeID = respAbrev[index].size.$t;
+			// displayAnimHTML(sizeID);
 
 			var photo = respAbrev[index].media.photos.photo[2].$t;
 
 			console.log(photo);
 
-			$('#dogimage').attr('src', photo);
+			$('#catimage').attr('src', photo);
 
 			$('#view-map').show();
 
@@ -104,114 +104,6 @@ $(document).ready(function() {
 
 		})
 
-		function displayAnimHTML(feature) {
-			$('.text').append('<br>' + feature);
+		function displayNameHTML(feature) {
+			$('#petName').html(feature);
 		}
-
-		$("#view-map").on("click", function() {
-
-		var mapURL = "https://maps.googleapis.com/maps/api/geocode/json?address="
-
-		var mapAddress = locationID;
-
-		mapURL = mapURL + mapAddress;
-		mapURL = mapURL.replace(/ /g, "+");
-
-
-		console.log("mapuURL: " + mapURL);
-
-		$.ajax({
-			url: mapURL,
-			method: "GET"
-		}).done(function(response) {
-
-			console.log(response);
-
-			var responseLoc = response.results[0].geometry.location;
-			locLat = responseLoc.lat;
-			locLong = responseLoc.lng;
-
-			console.log(locLat);
-			console.log(locLong);
-
-			console.log("long&lat: " + locLat + ", " + locLong);
-
-        	var markerOptions = {
-    			position: new google.maps.LatLng(locLat, locLong)
-				};
-				var marker = new google.maps.Marker(markerOptions);
-				marker.setMap(map);
-
-
-		});
-
-		var mapOptions = {
-			panControl: false,
-			zoomControl: false
-		}
-
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 41.4931, lng: -81.6790},
-          zoom: 11,
-          mapOptions
-
-        });
-
-        infoWindow = new google.maps.InfoWindow;
-
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            infoWindow.open(map);
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
-
-
-      		})
-
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-      }
-
-        })
-
-// function mapAPI() {
-// 		//map api
-
-// 		var mapURL = "https://maps.googleapis.com/maps/api/geocode/json?address="
-
-// 		var mapAddress = locationID;
-
-// 		mapAddress = mapURL + locationID;
-
-// 		console.log("mapuURL: " + mapURL);
-
-// 		var mapQueryURL 
-// 		// var mapOptions = {
-//   //   		center: new google.maps.LatLng(41.4931,-81.6790),
-//   //  			zoom: 12,
-//   //   		mapTypeId: google.maps.MapTypeId.ROADMAP
-// 		// };
-
-// 		new google.maps.Map(document.getElementById('map'), mapOptions);
-// 	}
-
-	
-});
