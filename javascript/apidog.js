@@ -60,21 +60,21 @@ $(document).ready(function() {
 			locationID = addr + ", " + city + ", "  + state + zipID;
 			// locationID = locationID.replace('"', " "); 
 			var nameID = respAbrev[index].name.$t;
-			displayAnimHTML(nameID);			
+			displayNameHTML(nameID);			
 
-			console.log("locationID: " + locationID);
-			displayAnimHTML(locationID);
+			// console.log("locationID: " + locationID);
+			// displayAnimHTML(locationID);
 
-			ageID = respAbrev[index].age.$t;
-			console.log(ageID);
-			displayAnimHTML(ageID);
+			// ageID = respAbrev[index].age.$t;
+			// console.log(ageID);
+			// displayAnimHTML(ageID);
 
-			catDogAnim = respAbrev[index].animal.$t;
-			console.log(catDogAnim);
-			displayAnimHTML(catDogAnim);
+			// catDogAnim = respAbrev[index].animal.$t;
+			// console.log(catDogAnim);
+			// displayAnimHTML(catDogAnim);
 
-			sexID = respAbrev[index].sex.$t;
-			displayAnimHTML(sexID);
+			// sexID = respAbrev[index].sex.$t;
+			// displayAnimHTML(sexID);
 
 			if (Array.isArray(respAbrev[index].breeds.breed)) {
 				breedID = respAbrev[index].breeds.breed[0].$t + "/ " + respAbrev[index].breeds.breed[1].$t + " mix";
@@ -82,11 +82,11 @@ $(document).ready(function() {
 			} else
 			 { breedID = respAbrev[index].breeds.breed.$t };
 
-			displayAnimHTML(breedID);
-			console.log("breedID: " + breedID);			
+			// displayAnimHTML(breedID);
+			// console.log("breedID: " + breedID);			
 
-			sizeID = respAbrev[index].size.$t;
-			displayAnimHTML(sizeID);
+			// sizeID = respAbrev[index].size.$t;
+			// displayAnimHTML(sizeID);
 
 			var photo = respAbrev[index].media.photos.photo[2].$t;
 
@@ -104,8 +104,8 @@ $(document).ready(function() {
 
 		})
 
-		function displayAnimHTML(feature) {
-			$('.text').append('<br>' + feature);
+		function displayNameHTML(feature) {
+			$('#petName').html(feature);
 		}
 
 		$("#view-map").on("click", function() {
