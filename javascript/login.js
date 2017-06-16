@@ -9,10 +9,6 @@ $(document).ready(function() {
         //userName = $("#name").val().trim();
         userEmail = $("#regEmail").val().trim();
         password = $("#regPassword").val().trim();
-
-        console.log(userEmail);
-        console.log(password);
-        
         //pwConfirm = $("#confirm").val().trim();
 
         firebase.auth().createUserWithEmailAndPassword(userEmail, password).catch(function(error) {

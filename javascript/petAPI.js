@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+<<<<<<< HEAD
     // Initialize Firebase
     var config = {
     apiKey: "AIzaSyCj_AZGEOgcPxJj6-qlIAjeE7o_uIGpoxY",
@@ -68,5 +69,3 @@ $(document).ready(function() {
 
 			database.ref().push(petInfo);	
 		});
-	});
-});
