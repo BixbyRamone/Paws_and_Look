@@ -284,22 +284,22 @@ $(document).ready(function() {
 
 			}).done(function(response) {
 
-			console.log("fdsfsdfsdfsdfsd" + response);
-			console.log("revGeolocQuery: " + revGeolocQuery);
-
+			var searchKey = "postal_code";
+			var zipcodeObject = null;
 			for( var i = 0; i < response.results[0].address_components.length; i++ ){
 				var thisAddressObject = response.results[0].address_components[i];
-
-				console.log("this Address Object :" + thisAddressObject);
-				if (thisAddressObject.types[i] == "postal_code") {
-
-					var reverseLoc = response.results[0].address_components[i].short_name;
-			console.log("reverse Geolocator zip: " + reverseLoc);
-			// var zipGetLatLngResp = response;
+				var addressTypes = thisAddressObject.types;
+				var search = addressTypes.indexOf(searchKey);
+				if( search > -1 ){
+					zipcodeObject = thisAddressObject;
+					break;
 				}
 			}
 			
-			});
+			if( zipcodeObject !== null ){
+				console.log(zipcodeObject);
+			}
+		});
 
 
       }
