@@ -1,100 +1,394 @@
 /* Mobile first! */ 
 
-body, html {
-	background-color: #f7f7f7;
- 	background-image: url(../images/background-image.png);
-}
-.navbar {
-	margin-bottom: 0;
-	border-radius: 0 !important;
-	border: none;
-	background-color: #e1e1e1;
-	height: 100px;
+
+body, html{
+    height: 100%;
+ 	font-family: 'Rubik', sans-serif;
+ 	background-color: #f7f7f7;
+ 	background-image: url(images/background-image.png);
 }
 
+
+.main {
+ 	margin-top: 60px;
+}
+
+.aTag .button {
+  color:#009698;
+}
+
+.aTag .button {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: white;
+}
+
+h1.title { 
+	font-size: 26px;
+	font-weight: 400; 
+	font-weight: bold;
+	margin:10px;
+}
+
+
+h3.title { 
+	font-size: 15px;
+	font-weight: 400; 
+}
+
+h4 {
+	font-size: 15px;
+	text-decoration: none;
+}
+
+hr {
+	width: 75%;
+	color: black;
+}
+
+.form-group {
+	margin-bottom: 15px;
+}
+
+.form-control {
+	height: 50px;
+}
+
+
+label{
+	margin-bottom: 15px;
+	padding-bottom:3px;
+}
+
+input,
+input::-webkit-input-placeholder {
+    font-size: 14px;
+    padding-top: 3px;
+}
+
+.main-login{
+ 	background-color: #fff;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+
+}
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0 !important;
+  border: none;
+  background-color: #e1e1e1;
+  height: 100px;
+}
+
+.main-center{
+ 	margin-top: 30px;
+ 	margin: 0 auto;
+ 	max-width: 100%;
+    padding: 20px 40px;
+
+}
+
+.login-button{
+	margin-top: 5px;
+}
+
+.login-register{
+	font-size: 11px;
+	text-align: center;
+}
+
+.login-element {
+	width: 100%;
+	height: 500px;
+	text-align: center;
+	background-color: #eeeee;
+	margin: 0 auto;
+}
+
+@media only screen and (min-width:1000px) {
+	.login-element {
+		width: 80%;
+		height: 500px;
+		text-align: center;
+		background-color: lightBlue;
+		margin: 0 auto;
+	}
+}
+
+img.placeholder {
+	width: 225px;
+	height: 150px;
+	margin-bottom: 20px;
+}
+
+.center {
+	text-align: center;
+}
+
+
+#placeholder2 {
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 30px;
+}
+
+.registerButton {
+  width: 100%;
+  height: 50px;
+}
+
+.flat-butt {
+  display: inline-block;
+  font-weight: lighter;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 6px;
+  font-size: 16.5px;
+  padding: 12px 20px;
+  border: 0;
+  color: #FFF;
+  cursor: pointer;
+  outline: 0
+  ;
+}
+
+.flat-butt:hover {
+  background: #00afb1;
+}
+
+.flat-primary-butt {
+  background: #009698;
+}
+
+.flat-primary-butt:hover {
+  background: #00afb1;
+}
+
+.flat-inner-butt {
+  padding: 11px 0px;
+  box-shadow: inset #2C3E50 -3px -3px 0px;
+}
+
+.flat-primary-inner-butt {
+  background: #009698;
+  box-shadow: inset #008486 -3px -3px 0px;
+}
+
+.flat-border-butt {
+  padding: 8px 20px;
+  background: none;
+  color: #000;
+  width: 85%;
+  font-size: 15px;
+  border: 2px solid #009698;
+}
+
+.flat-border-butt:hover {
+  color: white;
+  border: 2px solid #009698;
+}
+
+.choice-image {
+	margin: 20px;
+	width: 100px;
+	height: 90px;
+}
+
+.pet-image {
+  margin: 20px;
+  width: 80px;
+  height: 90px;
+}
+
+#pet-choices {
+	text-align: center;
+
+}
+
+.pet-name {
+  text-align: center;
+}
+
+.name, .sex, .age, .breed {
+  font-size: 18px;
+  padding: 5px;
+}
+
+.fa {
+  font: normal normal normal 28px/1 FontAwesome;
+}
+
+.fa-eye {
+  font: normal normal normal 40px/1 FontAwesome;
+}
+
+.fa:hover {
+  color: #00afb1;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+  vertical-align: middle;
+  font-size: 24px;
+}
+
+#zip-input {
+	margin: 20px 0px;
+}
+
+
+.flip {
+  -webkit-perspective: 800;
+perspective: 800;
+
+    position: relative;
+}
+
+.flip .card.flipped {
+  -webkit-transform: rotatey(-180deg);
+    transform: rotatey(-180deg);
+}
+
+.flip .card {
+
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: 0.5s;
+    transform-style: preserve-3d;
+    transition: 0.5s;
+}
+
+.flip .card .face {
+
+  -webkit-backface-visibility: hidden ;
+    backface-visibility: hidden ;
+  z-index: 2;
+   
+}
+
+.flip .card .front {
+  position: absolute;
+   width: 100%;
+  z-index: 1;
+
+}
+
+.flip .card .back {
+  -webkit-transform: rotatey(-180deg);
+    transform: rotatey(-180deg);
+}
+
+  .inner{
+  	margin:0px !important;
+  }
+
+  .image {
+    width: 100%;
+  }
+
+  tbody {
+    margin: 100px
+  }
+
+
+/*BEGIN COREYS CSS*/
+
 .navbar-brand .logo-1 {
- 	width: 110px;
-    position: absolute;
-    left: 50%;
-    margin-left: -50px !important;
-    display: block;
+ width: 110px;
+ position: absolute;
+ left: 50%;
+ margin-left: -50px !important;
+ display: block;
 }
 
 .starfixed {
-	padding-top: 15px;
-	position: fixed;
-	top: 11px;
-	right: 20px;
-	margin-right: 24px;
+  padding-top: 22px;
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  margin-right: 24px;
 }
 
 .filterbybreed {
-	background-color: #009698;
-	color: white;
-	box-shadow: inset #2C3E50 -3px -3px 0px;
-	box-shadow: inset #008486 -3px -3px 0px;
+  background-color: #009698;
+  color: white;
+  box-shadow: inset #2C3E50 -3px -3px 0px;
+  box-shadow: inset #008486 -3px -3px 0px;
 }
 
-.breed {
-	position: absolute;
-	padding-top: 34px;
-	font-size: 20px;
+.pet-breed {
+  position: absolute;
+  padding-left: 25px;
+  padding-top: 29px;
+  font-size: 20px;
 }
+
 .glyphicon-star-empty {
-	text-shadow: 3px 3px 4px white;
-	font-size: 3.2em;
-	color: #009698;
-    margin-right: 20px;
+  text-shadow: 3px 3px 4px white;
+  font-size: 2.2em;
+  color: #009698;
+    margin-right: 30px;
 }
 
 .glyphicon-star-empty:hover {
-	color: #2f4f4f;
-	font-size: 3.2em;
-	margin-right: 20px;
+  color: #985037;
+  font-size: 2.25em;
+  margin-right: 30px;
 }
 
 .breed {
-	margin-left: 30px;
-}
-#petName{
-	margin-top: 0px;
-	color: white;
-	position: fixed;
-	top: 445px;
-	left: 40%;
-	text-align: center;
-	background-color: rgba(0, 150, 152, 0.6);
-	padding: 7px 13px;
-	border-radius: 25px;
-}
-#catimage {
-	height: 300px;
-}
-#dogimage {
-	height: 415px;
-	margin-bottom: 0px;
+  margin-left: 30px;
 }
 
+#petName{
+  color: white;
+  position: fixed;
+  font-size: 30px;
+  top: 73%;
+  left: 39%;
+  text-align: center;
+  background-color: rgba(0, 150, 152, 0.6);
+  padding: 7px 13px;
+  border-radius: 25px;
+}
+#catimage {
+  height: 415px;
+}
+#dogimage {
+  height: 415px;
+  margin-bottom: 0px;
+}
+
+
 .glyphicon-filter {
-	font-size: 1.2em;
+  font-size: 1.2em;
 }
 
 .img-fluid {
-	margin: auto;
-	display: block;
+  height: auto;
+  margin: auto;
+  display: block;
 }
 
 .panel-footer {
-	background-color: #e1e1e1;
-	border-radius: 0 !important;
-	height: 110px;
-	position:absolute;
+  background-color: #e1e1e1;
+  border-radius: 0 !important;
+  height: 110px;
+  position:fixed;
+  left:0;
     bottom:0;
     width:100%;
 }
 
+
 .panel {
-	border: none;
+  border: none;
+  background-color: #e1e1e1;
 }
 
 
@@ -103,73 +397,74 @@ body, html {
   align-items: center;
   justify-content: center;
   margin-left: 30px;
-  margin-top: 6.5px;
+  margin-top: 3px;
   
   }
 
-		.button{
-			background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
-			background-image: linear-gradient(top, #f4f1ee, #fff);
-			border-radius: 50%;
-			box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204,198,197,.5);
-			float:left;
-			height: 70px;
-			margin: 0 30px 30px 0;
-			position: relative;
-			width: 70px;			
-			-webkit-transition: all .1s linear;
-			transition: all .1s linear;
-		}
+    .buttonTag {
+      background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
+      background-image: linear-gradient(top, #f4f1ee, #fff);
+      border-radius: 50%;
+      box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204,198,197,.5);
+      float:left;
+      height: 70px;
+      margin: 0 30px 30px 0;
+      position: relative;
+      width: 70px;      
+      -webkit-transition: all .1s linear;
+      transition: all .1s linear;
+    }
 
-		.button:after{
-			color:#e9e6e4;
-			content: "";
-			display: block;
-			font-size: 30px;
-			height: 30px;
-			text-decoration: none;
-			text-shadow: 0px -1px 1px #bdb5b4, 1px 1px 1px white;
-			position: absolute;
-			width: 30px;
-		}
+    .buttonTag:after{
+      color:#e9e6e4;
+      content: "";
+      display: block;
+      font-size: 30px;
+      height: 30px;
+      text-decoration: none;
+      text-shadow: 0px -1px 1px #bdb5b4, 1px 1px 1px white;
+      position: absolute;
+      width: 30px;
+    }
 
 
-		.heart:after{
-			content: "\2665";
-			left: 24px;
-			top: 8px;
-			font-size: 2.7em;
-		}
+    .heart:after{
+      content: "\2665";
+      left: 22px;
+      top: 24px;
+      font-size: 1.7em;
+    }
 
-		.cross:after{
-			content: "\03a7";
-			left: 26px;
-			top: 14px;
-		}
+    .cross:after{
+      content: "\03a7";
+      left: 26px;
+      top: 23px;
+      font-size: 1.8em;
+    }
 
-		.button:hover{
-			background-image: -webkit-linear-gradient(top, #fff, #f4f1ee);
-			background-image: linear-gradient(top, #fff, #f4f1ee);
-			color:#0088cc;
-		}
+    .buttonTag:hover{
+      background-image: -webkit-linear-gradient(top, #fff, #f4f1ee);
+      background-image: linear-gradient(top, #fff, #f4f1ee);
+      color:#0088cc;
+    }
 
-		.heart:hover:after{
-			color: #009698; 
-			text-shadow:0px 0px 6px #009698;
-		}
+    .heart:hover:after{
+      color: #009698; 
+      text-shadow:0px 0px 6px #009698;
+    }
 
-		.cross:hover:after{
-			color: #eb2f2f;
-			text-shadow:0px 0px 6px #eb2f2f;
-		}
+    .cross:hover:after{
+      color: #eb2f2f;
+      text-shadow:0px 0px 6px #eb2f2f;
+    }
 
-		.button:active{
-			background-image: -webkit-linear-gradient(top, #efedec, #f7f4f4);
-			background-image: linear-gradient(top, #efedec, #f7f4f4);
-			box-shadow: 0 3px 5px 0 rgba(0,0,0,.4), inset 0px -3px 1px 1px rgba(204,198,197,.5);
-		}
+    .buttonTag:active{
+      background-image: -webkit-linear-gradient(top, #efedec, #f7f4f4);
+      background-image: linear-gradient(top, #efedec, #f7f4f4);
+      box-shadow: 0 3px 5px 0 rgba(0,0,0,.4), inset 0px -3px 1px 1px rgba(204,198,197,.5);
+    }
 
-		.button:active:after{
-			color:#dbd2d2;
-			text-shadow: 0px -1px 1px #bdb5b4, 0px 1px 1px white;
-		}
+    .button:active:after{
+      color:#dbd2d2;
+      text-shadow: 0px -1px 1px #bdb5b4, 0px 1px 1px white;
+    }

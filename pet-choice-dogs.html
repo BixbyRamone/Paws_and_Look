@@ -13,50 +13,68 @@
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>	
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	
+	<script src="https://maps.googleapis.com/maps/api/js?sensor=false&address=Cleveland+Ohio&key=AIzaSyDKrHVe5pmqYZDTRvXL_XCH06BTssFChgQ"
+    ></script>
 
   </head>		
 
   <body>
-	
-	  <nav class="navbar navbar-default pawsandlook">
+			
+	<nav class="navbar navbar-default pawsandlook">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	   <div class="container-fluid">
-		<div class="dropdown breed">
-	       <button class="btn dropdown-toggle filterbybreed" type="button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-filter"></span><span class="caret"></span></button>
-	         <ul class="dropdown-menu">
-	            <li><a href="#">Action</a></li>
-	            <li><a href="#">Another action</a></li>
-	            <li><a href="#">Something else here</a></li>
-	         </ul>
-	        </div>
-	    </div>
-
-	    <div class="navbar-header">
-	       <a class="navbar-brand" href="http://www.paws.com"><img class="logo-1" src="images/paws-and-look-logo.png" alt="Paws & Look">
-	       </a>
-	    </div>
-		<div id="star-fav">
-        	<a href="https://www.google.com/" class="nav navbar-nav navbar-right">
-	  		<span class="glyphicon glyphicon-star-empty starfixed" aria-hidden="true"></span>
-			</a>
-		</div>
-		</div>
-	</nav>
-	
-		<img src="http://www.bigbluefootball.com/wp-content/uploads/2013/05/placeholder-846x634.png" class="img-fluid" id="dogimage" alt="Responsive image">
-
-		<h2 id="petName"></h2>
-	
-  	<div class="panel panel-default">
-    	<div class="panel-footer">
-
-		<div class="buttonHolder">
-		  <a id="negative" href="#" class="button cross"></a>
-		  <a href="#" class="button heart"></a>
-		</div>
+	   		<div class="row">
+				<div class="dropdown pet-breed">
+	     			  <button class="btn dropdown-toggle filterbybreed" type="button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+		     			  <span class="glyphicon glyphicon-filter"></span>
+		     			  <span class="caret"></span>
+		     		  </button>
+	        		 <ul class="dropdown-menu">
+	           			 <li><a href="#">Action</a></li>
+	            		<li><a href="#">Another action</a></li>
+	            		<li><a href="#">Something else here</a></li>
+	         		</ul>
+	        	</div>
+	    	</div>
+	    	<div>
+	    		<div class="navbar-header">
+	      			 <a class="navbar-brand" href="http://www.paws.com"><img class="logo-1" src="assets/images/logo-trans.png" alt="Paws & Look">
+	       			</a>
+	   			</div>
+				<div id="star-fav">
+        			<a href="favorite-pets" class="nav navbar-nav navbar-right">
+	  				<span class="glyphicon glyphicon-star-empty starfixed" aria-hidden="true"></span>
+					</a>
+				</div>
+			</div>
+		</nav>
     </div>
-  </div>
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6">
+				<img src="http://www.bigbluefootball.com/wp-content/uploads/2013/05/placeholder-846x634.png" class="img-fluid" id="dogimage" alt="Responsive image">
+				<h2 id="petName"></h2>
+			</div>
+			<div class="col-sm-3"></div>
+		</div>				
+			<div class="container">
+				<div class="panel-footer">
+	  				 <div class="row">
+						<div class="col-sm-12">	
+					  		<div class="panel panel-default">
+								<div class="buttonHolder">
+									<div class="buttonCross">
+								  		<a id="negative" href="#" class="buttonTag cross"></a>
+								  	</div>
+								  	<div class="buttonHeart">
+								  		<a id="positive" href="#" class="buttonTag heart"></a>
+								  	</div>
+								</div>
+						    </div>
+				 	    </div>
+				 	</div>
+				 </div>
+		    </div>
 
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
