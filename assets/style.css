@@ -298,6 +298,7 @@ perspective: 800;
 
 /*BEGIN COREYS CSS*/
 
+
 .navbar-brand .logo-1 {
  width: 110px;
  position: absolute;
@@ -307,11 +308,12 @@ perspective: 800;
 }
 
 .starfixed {
-  padding-top: 22px;
+  padding-top: 18px;
   position: fixed;
   top: 10px;
-  right: 20px;
+  right: 8px;
   margin-right: 24px;
+  color: #009698;
 }
 
 .filterbybreed {
@@ -320,24 +322,27 @@ perspective: 800;
   box-shadow: inset #2C3E50 -3px -3px 0px;
   box-shadow: inset #008486 -3px -3px 0px;
 }
+.filterbybreed:hover {
+  color: #00afb1;
+}
 
 .pet-breed {
   position: absolute;
   padding-left: 25px;
-  padding-top: 29px;
+  padding-top: 31px;
   font-size: 20px;
 }
 
 .glyphicon-star-empty {
   text-shadow: 3px 3px 4px white;
-  font-size: 2.2em;
+  font-size: 2.7em;
   color: #009698;
     margin-right: 30px;
 }
 
 .glyphicon-star-empty:hover {
-  color: #985037;
-  font-size: 2.25em;
+  color: #00afb1;
+  font-size: 2.7em;
   margin-right: 30px;
 }
 
