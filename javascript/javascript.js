@@ -34,35 +34,26 @@ $(document).ready(function() {
 
 
 	//function to get the cat/dog choices to page
-	function images () {
-		for (var i = 0; i < choiceArr.length; i++) {
-			var choiceDisplay = $("<img>");
-			choiceDisplay.addClass("choice-image");
-			choiceDisplay.attr("src", choiceArr[i].image);
-			choiceDisplay.attr("alt", choiceArr[i].alt);
-			$("#pet-choices").prepend(choiceDisplay);
-		}
-		$(".choice-image").on("click", function () {
-			if ($(this).attr("alt") === "cat") {
-				alert("go to cat");
+
+		$(".nextPage").on("click", function () {
+			if ($("drinkcard-pet cat").attr("value") === "cat") {
+				console.log("click")
+				window.location.href = "pet-choice-cats.html";
 			}
 
 			else {
-				alert("go to dog");
+				window.location.href = "pet-choice-dogs.html";
 			}	
 
 	});
-	};
 
-	
-
-	//calling function  for cat dog pics
-	images();
 
 	//function for flip animations
 		$('.fliper-btn').click(function(){
 		$('.flip').find('.card').toggleClass('flipped');
 	});
+
+
 
 	  database.ref().on("child_added", function(childSnapshot) {
 
@@ -83,6 +74,7 @@ $(document).ready(function() {
 	        //creates a containter for thumbnail
             var thumbDisplay = $("<img>");
             thumbDisplay.addClass("pet-image");
+            thumbDisplay.addClass("img-circle");
 			thumbDisplay.attr("src", data.photo);
    
    			//adding data to classes
@@ -105,15 +97,15 @@ $(document).ready(function() {
       		newBody.attr("data-breed", data.breed);
 
       		//and finally writing every single thing to the HTML
-            petTable.append(newBody);  
-
-
+            petTable.append(newBody);
+            $(".loader").remove();
 		};
         
         displayFavorite();
 
         
         //event for when a user clicks on a pet group
+        function petClick() {
         $(".pet-group").on("click", function () {
         		//calling the data attributes for the group
 				imageValue = $(this).attr("data-image");
@@ -128,6 +120,8 @@ $(document).ready(function() {
 				$(".main-login").html("<a href= 'favorite-pets.html'><i class='fa fa-arrow-left'</a>");
 				var imageDisplay = $("<img>");
 				imageDisplay.addClass("image");
+				imageDisplay.addClass("img-thumbnail");
+				imageDisplay.addClass("animation-target");
 				imageDisplay.attr("src", imageValue);
 				$(".main-login").append("<div class=image>");
 				$(".main-login").append("<div class=name>Name: ");
@@ -140,6 +134,9 @@ $(document).ready(function() {
 				$(".age").append(ageValue);
 				$(".breed").append(breedValue);
 		});
+    };
+
+    petClick();
 
 
     },  
