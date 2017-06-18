@@ -15,6 +15,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
     integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" 
     crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>	
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 
@@ -45,9 +49,22 @@
 		     			  <span class="caret"></span>
 		     		  </button>
 	        		 <ul class="dropdown-menu">
-	           			 <li><a href="#">Action</a></li>
-	            		<li><a href="#">Another action</a></li>
-	            		<li><a href="#">Something else here</a></li>
+						<div class="form-check">
+						  <label class="form-check-label">
+						    <input class="form-check-input" type="checkbox" value="">
+						    Dogs
+						  </label>
+						  						  <label class="form-check-label">
+						    <input class="form-check-input" type="checkbox" value="">
+						    Cats
+						  </label>
+						</div>
+						<div class="form-check disabled">
+						  <label class="form-check-label">
+						    <input class="form-check-input" type="checkbox" value="" disabled>
+						    I'm Feeling Lucky
+						  </label>
+						</div>
 	         		</ul>
 	        	</div>
 	    	</div>
@@ -57,41 +74,11 @@
 	       			</a>
 	   			</div>
 				<div id="star-fav">
-        			<a href="pet-choice-dogs.html"><i class="fa fa-eye starfixed" aria-hidden="true" href="facebook.com"></i></a>
+        			<a href="pet-choice.html"><i class="fa fa-eye starfixed" aria-hidden="true"></i></a>
 				</div>
 			</div>
 		</nav>
     </div>
-    <div class="container-fluid">
-    	<!-- <div class="row">
-      		<div class="col-sm-12">
-			
-			<nav class="navbar navbar-default pawsandlook">
-	    <!-- Brand and toggle get grouped for better mobile display -->
-	   <!-- <div class="container-fluid">
-	   <div class="row">
-		<div class="dropdown dog-breed">
-	       <button class="btn dropdown-toggle filterbybreed" type="button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-filter"></span><span class="caret"></span></button>
-	         <ul class="dropdown-menu">
-	            <li><a href="#">Action</a></li>
-	            <li><a href="#">Another action</a></li>
-	            <li><a href="#">Something else here</a></li>
-	         </ul>
-	        </div>
-	    </div>
-
-	    <div class="navbar-header">
-	       <a class="navbar-brand" href="http://www.paws.com"><img class="logo-1" src="assets/images/logo-trans.png" alt="Paws & Look">
-	       </a>
-	    </div>
-		<div id="star-fav">
-	  		<a href="pet-choice-dogs.html"><i class="fa fa-eye starfixed" aria-hidden="true" href="facebook.com"></i></a>
-			</a>
-		</div>
-		</div>
-	</nav>
-        	</div>
-  		</div> -->
 
 		<div class = "row">
 			<div class = "col-sm-12">
@@ -99,6 +86,8 @@
 			<div class="main-login main-center">
 
 			 <table class="table">
+			 			<br><br><br>
+			<div class="loader"></div>
 				  <thead>
 
 				    </thead>
