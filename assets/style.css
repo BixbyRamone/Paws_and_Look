@@ -2,15 +2,19 @@
 
 
 body, html{
-    height: 100%;
+  height: 100%;
  	font-family: 'Rubik', sans-serif;
  	background-color: #f7f7f7;
  	background-image: url(images/background-image.png);
 }
 
+p {
+  font-family: 'Rubik', sans-serif;
+  background-color: white;
+}
 
 .main {
- 	margin-top: 60px;
+ 	margin-top: 30px;
 }
 
 .aTag .button {
@@ -76,8 +80,8 @@ input::-webkit-input-placeholder {
     -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-
 }
+
 .navbar {
   margin-bottom: 0;
   border-radius: 0 !important;
@@ -151,16 +155,16 @@ img.placeholder {
 .flat-butt {
   display: inline-block;
   font-weight: lighter;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   border-radius: 6px;
   font-size: 16.5px;
   padding: 12px 20px;
   border: 0;
   color: #FFF;
   cursor: pointer;
-  outline: 0
-  ;
+  outline: 0;
+  width: 100%;
+  
 }
 
 .flat-butt:hover {
@@ -176,7 +180,6 @@ img.placeholder {
 }
 
 .flat-inner-butt {
-  padding: 11px 0px;
   box-shadow: inset #2C3E50 -3px -3px 0px;
 }
 
@@ -187,9 +190,9 @@ img.placeholder {
 
 .flat-border-butt {
   padding: 8px 20px;
-  background: none;
+  background: #009698;
   color: #000;
-  width: 85%;
+  width: 100%;
   font-size: 15px;
   border: 2px solid #009698;
 }
@@ -209,6 +212,13 @@ img.placeholder {
   margin: 20px;
   width: 80px;
   height: 90px;
+}
+
+.pet-image-bigger {
+  display: block;
+  margin: 20px;
+  width: 200px;
+  height: 600px;
 }
 
 #pet-choices {
@@ -392,10 +402,13 @@ perspective: 800;
   tbody {
     margin: 100px
   }
-
+  
+.pet-selector {
+  text-align: center;
+}
+  
 .pet-selector input{
     margin:0;padding:0;
-    text-align: center;
     -webkit-appearance:none;
        -moz-appearance:none;
             appearance:none;
@@ -409,6 +422,7 @@ perspective: 800;
        -moz-filter: none;
             filter: none;
 }
+
 .drinkcard-pet{
     cursor:pointer;
     background-size:contain;
@@ -422,6 +436,7 @@ perspective: 800;
        -moz-filter: brightness(1) grayscale(1) ;
             filter: brightness(1) grayscale(1) ;
 }
+
 .drinkcard-pet:hover{
     -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
        -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
@@ -492,8 +507,7 @@ p{margin-bottom:.3em;}
   color: white;
   position: fixed;
   font-size: 18px;
-  top: 70%;
-  left: 39%;
+  margin-top: 15px;
   text-align: center;
   background-color: #009698;
   padding: 7px 13px;
@@ -510,6 +524,11 @@ p{margin-bottom:.3em;}
   background: #009698;
   box-shadow: inset #008486 -3px -3px 0px;
 }
+
+#petName:hover {
+  background: #00afb1;
+}
+
 #catimage {
   height: 415px;
 }
@@ -534,10 +553,12 @@ p{margin-bottom:.3em;}
 }
 
 
+
 .panel {
   border: none;
   background-color: #f9f9f9;
 }
+
 
 
 .buttonHolder{
