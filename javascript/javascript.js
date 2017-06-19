@@ -34,16 +34,20 @@ $(document).ready(function() {
 
 
 	//function to get the cat/dog choices to page
-
 		$(".nextPage").on("click", function () {
-			if ($("drinkcard-pet cat").attr("value") === "cat") {
-				console.log("click")
-				window.location.href = "pet-choice-cats.html";
-			}
+            if ($("input[value=dog]:checked").val() === "dog") {
+                window.location.href = "pet-choice-dogs.html";
+            }
 
-			else {
-				window.location.href = "pet-choice-dogs.html";
-			}	
+            else if ($("input[value=cat]:checked").val() === "cat") {
+                window.location.href = "pet-choice-cats.html";
+            }
+
+            else {
+                 window.location.href = "pet-choice-random.html";
+            }
+
+
 
 	});
 
@@ -116,8 +120,7 @@ $(document).ready(function() {
 
 	      		//emptying out the div and displaying the user's selection
 				$(".main-login").empty();
-				$('html, body').animate({ scrollTop: 150 }, 'fast');
-				$(".main-login").html("<a href= 'favorite-pets.html'><i class='fa fa-arrow-left'</a>");
+				$('body').scrollTop();
 				var imageDisplay = $("<img>");
 				imageDisplay.addClass("image");
 				imageDisplay.addClass("img-thumbnail");
@@ -133,6 +136,8 @@ $(document).ready(function() {
 				$(".sex").append(sexValue);
 				$(".age").append(ageValue);
 				$(".breed").append(breedValue);
+                $(".main-login").append("<a href= 'favorite-pets.html'><i class='fa fa-arrow-left'</i><p>Go Back</p></a>");
+
 		});
     };
 
