@@ -49,6 +49,10 @@ $(document).ready(function() {
         
         Geolocator();
         // map = new google.maps.Map(document.getElementById('map'), {
+  //         center: {lat: parseInt(globalLat), lng: parseInt(globalLng)}, //lat: 41.4931, lng: -81.6790
+  //         zoom: 11,
+  //         scrollwheel: false
+  //         });
         
     $('#negative').on('click', function() {
         DisplayAnimal();
@@ -57,23 +61,24 @@ $(document).ready(function() {
     })
 
     $('#positive').on('click', function() {
+    	MakeMap();
     	FireBaseFunction();
     	DisplayAnimal();
+
     })
+    
     $('#view-map').on('click', function() {
         MakeMap();
         $('#map').show();
     })
     
                 
-	//------------Functions---------------------
+    //------------Functions---------------------
+    //Function to run geolocator
+    function Geolocator() {
+         infoWindow = new google.maps.InfoWindow;
 
-	//Function to run geolocator
-
-	function Geolocator() {
-
-		 infoWindow = new google.maps.InfoWindow;
-
+         // console.log("InfoWindow: " + infoWindow);
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -81,6 +86,8 @@ $(document).ready(function() {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
+                        console.log("pos" + pos);
+
             globalLat = pos.lat;
             globalLng = pos.lng;
             //making markers. should turn into a function
@@ -90,8 +97,7 @@ $(document).ready(function() {
                 var marker = new google.maps.Marker(markerOptions);
                 marker.setMap(map);
             // console.log("pos.long&lat: " + pos.lat + ", " + pos.lng);
-            
-        
+                    
             infoWindow.setPosition(pos);
             infoWindow.setContent('Location found.');
             // infoWindow.open(map);
@@ -114,19 +120,27 @@ $(document).ready(function() {
       //     zoom: 11,
       //     scrollwheel: false
       //     });
-        // console.log(mapURL);
+        console.log(mapURL);
         var mapURLloc = mapURL + mapAddress;
         mapURLloc = mapURLloc.replace(/ /g, "+");
-        // console.log("mapURL: " + mapURLloc);
+        console.log("mapURLloc: " + mapURLloc);
         $.ajax({
             url: mapURLloc,
             method: "GET"
         }).done(function(response) {
-            // console.log(response);
+            console.log(response);
             var responseLoc = response.results[0].geometry.location;
             animLocLat = responseLoc.lat;
             animnLocLong = responseLoc.lng;
+
+            console.log("FB " + animLocLat);
+            console.log("FB " + animnLocLong);
+
+            var test = JSON.stringify(animLocLat);
+            console.log("Test: " + test);
+
             // console.log("lat&long: " + reanimLocLat + ", " + animnLocLong);
+            console.log("AnNIMLOCATION!!!!!!: " + animLocLat + animnLocLong);
             MarkerMaker(animLocLat, animnLocLong);
             // console.log('to marker maker data: ' + globalLat + globalLng);
             MarkerMaker(globalLat, globalLng);
@@ -155,13 +169,13 @@ $(document).ready(function() {
 
     var randomZip = randZipArray[Math.floor(Math.random()*24 + 0)]
     var locationQuery = "&location=" + randomZip;
-    console.log("Randomized zip locationQuery: " + locationQuery)
+    // console.log("Randomized zip locationQuery: " + locationQuery)
    
     loop = false;
         
     var queryURL = AnimURL + key + locationQuery + "&animal="  + catDogSelect + "&age=" + ageSelect + "&sex=" + sexSelect + "&breed=" + breedSelect + "&size=" + sizeSelect;
     queryURL = queryURL.replace(" ", "+");
-        console.log("while Loop outside function");
+        // console.log("while Loop outside function");
         AnimalAJAX(queryURL);
     
    
@@ -209,7 +223,7 @@ $(document).ready(function() {
             }
         });
             
-      };
+      }
       function makeZipArray(number) {
         number = parseInt(number);
         var posIterator = number + 13;
@@ -231,7 +245,7 @@ $(document).ready(function() {
             dataType: "jsonp",
             method: "GET"
         }).done(function(response) {
-            console.log("while loop")
+            // console.log("while loop")
             var index = Math.floor((Math.random() * 24) + 0);
             // console.log("random index: " + index);
             if (response.petfinder.pets == undefined) {
@@ -246,40 +260,51 @@ $(document).ready(function() {
             // console.log(response);           
 // getting animal location
             respAbrev = response.petfinder.pets.pet;
-            console.log(respAbrev);
+            // console.log(respAbrev);
             addr = respAbrev[index].contact.address1.$t;
+            addr = ClearUndefined(addr);
+
             city = respAbrev[index].contact.city.$t;
+            city = ClearUndefined(city);
+
             state = respAbrev[index].contact.state.$t;
+            state = ClearUndefined(state);
+
             zipID = respAbrev[index].contact.zip.$t;
+            zipID = ClearUndefined(zipID);
+
 // format animal location into standard format
             locationID = addr + ", " + city + ", "  + state + " " + zipID;
             mapAddress = locationID;
-            console.log("locationID check undf: " + locationID);
+            if (mapAddress.charAt(0) == ",") {
+            	mapAddress = mapAddress.replace(",+", "");
+            }
+            // console.log("locationID check undf: " + locationID);
             if (locationID.indexOf('undefined') == 0) {
             locationID = locationID.replace(/undefined, /g, "");
             }
 
-            console.log("locationID: " + locationID);
+            // console.log("locationID: " + locationID);
             // locationID = locationID.replace('"', " "); 
             nameID = respAbrev[index].name.$t;
             $('#petName').html(nameID);         
-            console.log("nameID: " + nameID);
+            // console.log("nameID: " + nameID);
             // displayAnimHTML(locationID);
             ageID = respAbrev[index].age.$t;
-            console.log("ageID: " + ageID);
+            // console.log("ageID: " + ageID);
             // displayAnimHTML(ageID);
             catDogAnim = respAbrev[index].animal.$t;
-            console.log("catDogAnim: " + catDogAnim);
+            // console.log("catDogAnim: " + catDogAnim);
             // displayAnimHTML(catDogAnim);
             sexID = respAbrev[index].sex.$t;
-            console.log("sexID: " + sexID)
+            // console.log("sexID: " + sexID)
             // displayAnimHTML(sexID);
             phoneID = respAbrev[index].contact.phone.$t;
-            console.log("phoneID: " + phoneID);
+            // console.log("phoneID: " + phoneID);
 
             emailID = respAbrev[index].contact.email.$t;
             // displayAnimHTML(emailID);
-            console.log("phoneID: " + phoneID);
+            // console.log("phoneID: " + phoneID);
 
             
             if (Array.isArray(respAbrev[index].breeds.breed)) {
@@ -289,13 +314,13 @@ $(document).ready(function() {
              { breedID = respAbrev[index].breeds.breed.$t };
 
             // displayAnimHTML(breedID);
-            console.log("breedID: " + breedID); 
+            // console.log("breedID: " + breedID); 
 
             sizeID = respAbrev[index].size.$t;
 
             // displayAnimHTML(sizeID);
             photo = respAbrev[index].media.photos.photo[2].$t;
-            console.log("PHOTO-1: " + photo);
+            // console.log("PHOTO-1: " + photo);
             $('#dogimage').attr('src', photo);// corey change here
             // $('#map').show();
 
@@ -319,30 +344,34 @@ $(document).ready(function() {
     	  phoneID = FixUndefined(phoneID);
     	  emailID = FixUndefined(emailID);
     	  photo = FixUndefined(photo);
+    	  animLocLat = FixUndefined(animLocLat);
+    	  animnLocLong = FixUndefined(animnLocLong);
 
-    	  console.log("FB " + sexID);
-    	  console.log("FB " + nameID);
-    	  console.log("FB " + ageID);
-    	  console.log("FB " + catDogAnim);
-    	  console.log("FB " + breedID);
-    	  console.log("FB " + locationID);
-    	  console.log("FB " + phoneID);
-    	  console.log("FB " + emailID);
-    	  console.log("FB " + photo);
+    	  // console.log("FB " + sexID);
+    	  // console.log("FB " + nameID);
+    	  // console.log("FB " + ageID);
+    	  // console.log("FB " + catDogAnim);
+    	  // console.log("FB " + breedID);
+    	  // console.log("FB " + locationID);
+    	  // console.log("FB " + phoneID);
+    	  // console.log("FB " + emailID);
+    	  // console.log("FB " + photo);
+    	  // console.log("FB " + animLocLat);
+    	  // console.log("FB " + animnLocLong);
 
             
             //var zipInput = $("#zip").val();
             var userZip = '&location=' + zip;
             var pfApiUrl = "http://api.petfinder.com/pet.find?format=json&key=f411ff9725d287d4138503a0c95030a6&count=1&output=basic"
             var queryURL = pfApiUrl + userZip;
-            console.log(queryURL);
+            // console.log(queryURL);
             $.ajax({
                 url: queryURL,
                 dataType: "jsonp",
                 method: "GET"
             }).done(function(response) {
-                console.log(response);
-                console.log("PHOTO: " + photo);
+                // console.log(response);
+                // console.log("PHOTO: " + photo);
                 var petInfo = {
                 animal: catDogAnim,
                 breed: breedID,
@@ -365,7 +394,7 @@ $(document).ready(function() {
     }
 
     function FixUndefined(variable) {
-    	console.log(variable);
+    	// console.log(variable);
     	 if (variable === undefined || variable === null) {
             var returnVar = "No information";
             return returnVar;
@@ -373,6 +402,14 @@ $(document).ready(function() {
             	return variable;
             }
     }
+
+    function ClearUndefined(variable) {
+    	 if (variable === undefined || variable === null) {
+            var returnVar = "";
+            return returnVar;
+            } else {
+            	return variable;
+            }
+    }
      
 });
-
