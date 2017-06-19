@@ -42,6 +42,7 @@ $(document).ready(function() {
     var emailID = "";
     var photo;
     var mapURLloc = "";
+    var description = "";
     var loop = false;
     $('#map').hide();
     // $('#view-map').hide();
@@ -246,7 +247,7 @@ $(document).ready(function() {
             dataType: "jsonp",
             method: "GET"
         }).done(function(response) {
-            // console.log("while loop")
+            console.log(response)
             var index = Math.floor((Math.random() * 24) + 0);
             // console.log("random index: " + index);
             if (response.petfinder.pets == undefined) {
@@ -307,6 +308,9 @@ $(document).ready(function() {
             // displayAnimHTML(emailID);
             // console.log("phoneID: " + phoneID);
 
+            description = respAbrev[index].description.$t;
+            console.log(description);
+
             
             if (Array.isArray(respAbrev[index].breeds.breed)) {
                 breedID = respAbrev[index].breeds.breed[0].$t + "/ " + respAbrev[index].breeds.breed[1].$t + " mix";
@@ -347,6 +351,7 @@ $(document).ready(function() {
     	  photo = FixUndefined(photo);
     	  animLocLat = FixUndefined(animLocLat);
     	  animnLocLong = FixUndefined(animnLocLong);
+          description = FixUndefined(description);
 
     	  // console.log("FB " + sexID);
     	  // console.log("FB " + nameID);
@@ -388,7 +393,8 @@ $(document).ready(function() {
                 photo: photo,
                 animLocLat: animLocLat,
                 animnLocLong: animnLocLong,
-                mapURLloc: mapURLloc
+                mapURLloc: mapURLloc,
+                description: description
                 }
                 console.log("FIREBASE" + petInfo);
                     database.ref().push(petInfo);
@@ -415,3 +421,4 @@ $(document).ready(function() {
     }
      
 });
+
