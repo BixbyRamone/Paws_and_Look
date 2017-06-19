@@ -41,6 +41,7 @@ $(document).ready(function() {
     var phoneID = "";
     var emailID = "";
     var photo;
+    var mapURLloc = "";
     var loop = false;
     $('#map').hide();
     // $('#view-map').hide();
@@ -121,7 +122,7 @@ $(document).ready(function() {
       //     scrollwheel: false
       //     });
         console.log(mapURL);
-        var mapURLloc = mapURL + mapAddress;
+        mapURLloc = mapURL + mapAddress;
         mapURLloc = mapURLloc.replace(/ /g, "+");
         console.log("mapURLloc: " + mapURLloc);
         $.ajax({
@@ -386,7 +387,8 @@ $(document).ready(function() {
                 email: emailID,
                 photo: photo,
                 animLocLat: animLocLat,
-                animnLocLong: animnLocLong
+                animnLocLong: animnLocLong,
+                mapURLloc: mapURLloc
                 }
                 console.log("FIREBASE" + petInfo);
                     database.ref().push(petInfo);
