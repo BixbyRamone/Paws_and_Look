@@ -1,1 +1,1 @@
-# Paws_and_Look
+# paws-and-look
